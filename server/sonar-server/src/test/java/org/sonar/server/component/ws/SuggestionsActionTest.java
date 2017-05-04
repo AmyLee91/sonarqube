@@ -208,7 +208,7 @@ public class SuggestionsActionTest {
     assertThat(response.getProjectsList())
       .extracting(Project::getKey, Project::getName)
       .containsExactlyInAnyOrder(
-        tuple(project.key(), project.longName()));
+        tuple(project.key(), project.name()));
   }
 
   @Test
