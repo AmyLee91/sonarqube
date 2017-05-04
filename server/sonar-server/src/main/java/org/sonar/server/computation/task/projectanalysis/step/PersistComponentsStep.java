@@ -49,6 +49,7 @@ import org.sonar.server.computation.task.projectanalysis.component.PathAwareVisi
 import org.sonar.server.computation.task.projectanalysis.component.TreeRootHolder;
 import org.sonar.server.computation.task.step.ComputationStep;
 
+import static com.google.common.base.Preconditions.checkState;
 import static com.google.common.collect.FluentIterable.from;
 import static org.sonar.db.component.ComponentDto.UUID_PATH_OF_ROOT;
 import static org.sonar.db.component.ComponentDto.UUID_PATH_SEPARATOR;
@@ -60,6 +61,7 @@ import static org.sonar.server.computation.task.projectanalysis.component.Compon
  * Also feed the components cache {@link DbIdsRepositoryImpl} with component ids
  */
 public class PersistComponentsStep implements ComputationStep {
+  private static final boolean NEW_VIEWS_SHOULD_BE_PRIVATE = false;
   private final DbClient dbClient;
   private final TreeRootHolder treeRootHolder;
   private final MutableDbIdsRepository dbIdsRepository;
@@ -92,7 +94,7 @@ public class PersistComponentsStep implements ComputationStep {
       dbClient.componentDao().resetBChangedForRootComponentUuid(dbSession, projectUuid);
 
       Map<String, ComponentDto> existingDtosByKeys = indexExistingDtosByKey(dbSession);
-      boolean isRootPrivate = isRootPrivate(treeRootHolder.getRoot().getKey(), existingDtosByKeys);
+      boolean isRootPrivate = isRootPrivate(treeRootHolder.getRoot(), existingDtosByKeys);
       // Insert or update the components in database. They are removed from existingDtosByKeys
       // at the same time.
       new PathAwareCrawler<>(new PersistComponentStepsVisitor(existingDtosByKeys, dbSession))
@@ -118,9 +120,14 @@ public class PersistComponentsStep implements ComputationStep {
     dbClient.componentDao().setPrivateForRootComponentUuid(dbSession, projectUuid, isRootPrivate);
   }
 
-  private static boolean isRootPrivate(String rootKey, Map<String, ComponentDto> existingDtosByKeys) {
-    ComponentDto projectDto = existingDtosByKeys.get(rootKey);
-    return projectDto == null ? false /*FIXME actually use default configured for current organization*/ : projectDto.isPrivate();
+  private static boolean isRootPrivate(Component root, Map<String, ComponentDto> existingDtosByKeys) {
+    if (Component.Type.VIEW == root.getType()) {
+      return NEW_VIEWS_SHOULD_BE_PRIVATE;
+    }
+    String rootKey = root.getKey();
+    ComponentDto rootDto = existingDtosByKeys.get(rootKey);
+    checkState(rootDto != null, "The project '%s' is not stored in the database, during a project analysis.", rootKey);
+    return rootDto.isPrivate();
   }
 
   /**
