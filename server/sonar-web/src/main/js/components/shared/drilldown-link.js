@@ -55,7 +55,9 @@ export class DrilldownLink extends React.PureComponent {
   propsToIssueParams = () => {
     const params = {};
 
-    if (this.props.periodDate) {
+    if (this.props.sinceLeakPeriod) {
+      params.sinceLeakPeriod = true;
+    } else if (this.props.periodDate) {
       params.createdAfter = moment(this.props.periodDate).format('YYYY-MM-DDTHH:mm:ssZZ');
     }
 
