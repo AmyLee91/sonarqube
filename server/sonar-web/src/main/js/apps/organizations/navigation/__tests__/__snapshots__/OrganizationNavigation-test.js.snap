@@ -11,28 +11,36 @@ exports[`admin 1`] = `
     <div
       className="container"
     >
-      <h2
-        className="navbar-context-title"
-      >
-        <span
-          className="navbar-context-title-qualifier little-spacer-right"
-        >
-          <OrganizationIcon />
-        </span>
-        <Link
-          className="link-base-color"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/organizations/foo"
-        >
-          <strong>
-            Foo
-          </strong>
-        </Link>
-      </h2>
       <div
-        className="navbar-context-meta"
-      />
+        className="display-flex"
+      >
+        <div
+          className="navbar-context-title"
+        >
+          <h2
+            className="pull-left"
+          >
+            <span
+              className="navbar-context-title-qualifier little-spacer-right"
+            >
+              <OrganizationIcon />
+            </span>
+            <Link
+              className="link-base-color"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/organizations/foo"
+            >
+              <strong>
+                Foo
+              </strong>
+            </Link>
+          </h2>
+        </div>
+        <div
+          className="navbar-context-meta"
+        />
+      </div>
       <ul
         className="nav navbar-nav nav-tabs"
       >
@@ -172,28 +180,36 @@ exports[`regular user 1`] = `
     <div
       className="container"
     >
-      <h2
-        className="navbar-context-title"
-      >
-        <span
-          className="navbar-context-title-qualifier little-spacer-right"
-        >
-          <OrganizationIcon />
-        </span>
-        <Link
-          className="link-base-color"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/organizations/foo"
-        >
-          <strong>
-            Foo
-          </strong>
-        </Link>
-      </h2>
       <div
-        className="navbar-context-meta"
-      />
+        className="display-flex"
+      >
+        <div
+          className="navbar-context-title"
+        >
+          <h2
+            className="pull-left"
+          >
+            <span
+              className="navbar-context-title-qualifier little-spacer-right"
+            >
+              <OrganizationIcon />
+            </span>
+            <Link
+              className="link-base-color"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/organizations/foo"
+            >
+              <strong>
+                Foo
+              </strong>
+            </Link>
+          </h2>
+        </div>
+        <div
+          className="navbar-context-meta"
+        />
+      </div>
       <ul
         className="nav navbar-nav nav-tabs"
       >
@@ -254,28 +270,36 @@ exports[`undeletable org 1`] = `
     <div
       className="container"
     >
-      <h2
-        className="navbar-context-title"
-      >
-        <span
-          className="navbar-context-title-qualifier little-spacer-right"
-        >
-          <OrganizationIcon />
-        </span>
-        <Link
-          className="link-base-color"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/organizations/foo"
-        >
-          <strong>
-            Foo
-          </strong>
-        </Link>
-      </h2>
       <div
-        className="navbar-context-meta"
-      />
+        className="display-flex"
+      >
+        <div
+          className="navbar-context-title"
+        >
+          <h2
+            className="pull-left"
+          >
+            <span
+              className="navbar-context-title-qualifier little-spacer-right"
+            >
+              <OrganizationIcon />
+            </span>
+            <Link
+              className="link-base-color"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/organizations/foo"
+            >
+              <strong>
+                Foo
+              </strong>
+            </Link>
+          </h2>
+        </div>
+        <div
+          className="navbar-context-meta"
+        />
+      </div>
       <ul
         className="nav navbar-nav nav-tabs"
       >

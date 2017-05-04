@@ -148,37 +148,40 @@ export default class OrganizationNavigation extends React.PureComponent {
       <nav className="navbar navbar-context page-container" id="context-navigation">
         <div className="navbar-context-inner">
           <div className="container">
-            <h2 className="navbar-context-title">
-              <span className="navbar-context-title-qualifier little-spacer-right">
-                <OrganizationIcon />
-              </span>
-              <Link to={`/organizations/${organization.key}`} className="link-base-color">
-                <strong>{organization.name}</strong>
-              </Link>
-            </h2>
+            <div className="display-flex">
+              <div className="navbar-context-title">
+                <h2 className="pull-left">
+                  <span className="navbar-context-title-qualifier little-spacer-right">
+                    <OrganizationIcon />
+                  </span>
+                  <Link to={`/organizations/${organization.key}`} className="link-base-color">
+                    <strong>{organization.name}</strong>
+                  </Link>
+                </h2>
 
-            {organization.description != null &&
-              <div className="navbar-context-description">
-                <p className="text-limited text-top" title={organization.description}>
-                  {organization.description}
-                </p>
-              </div>}
-
-            <div className="navbar-context-meta">
-              {!!organization.avatar &&
-                <img src={organization.avatar} height={30} alt={organization.name} />}
-              {organization.url != null &&
-                <div>
-                  <p className="text-limited text-top">
-                    <a
-                      className="link-underline"
-                      href={organization.url}
-                      title={organization.url}
-                      rel="nofollow">
-                      {organization.url}
-                    </a>
-                  </p>
-                </div>}
+                {organization.description != null &&
+                  <div className="navbar-context-description">
+                    <p className="text-limited text-top" title={organization.description}>
+                      {organization.description}
+                    </p>
+                  </div>}
+              </div>
+              <div className="navbar-context-meta">
+                {!!organization.avatar &&
+                  <img src={organization.avatar} height={30} alt={organization.name} />}
+                {organization.url != null &&
+                  <div>
+                    <p className="text-limited text-top">
+                      <a
+                        className="link-underline"
+                        href={organization.url}
+                        title={organization.url}
+                        rel="nofollow">
+                        {organization.url}
+                      </a>
+                    </p>
+                  </div>}
+              </div>
             </div>
 
             <ul className="nav navbar-nav nav-tabs">

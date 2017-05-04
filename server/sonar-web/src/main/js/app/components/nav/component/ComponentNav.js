@@ -69,25 +69,26 @@ export default class ComponentNav extends React.PureComponent {
       <nav className="navbar navbar-context page-container" id="context-navigation">
         <div className="navbar-context-inner">
           <div className="container">
-            <ComponentNavFavorite
-              component={this.props.component.key}
-              favorite={this.props.component.isFavorite}
-            />
-
-            <ComponentNavBreadcrumbs
-              component={this.props.component}
-              breadcrumbs={this.props.component.breadcrumbs}
-            />
-
-            <TooltipsContainer options={{ delay: { show: 0, hide: 2000 } }}>
-              <ComponentNavMeta
-                {...this.props}
-                {...this.state}
-                version={this.props.component.version}
-                snapshotDate={this.props.component.snapshotDate}
+            <div className="display-flex">
+              <ComponentNavFavorite
+                component={this.props.component.key}
+                favorite={this.props.component.isFavorite}
               />
-            </TooltipsContainer>
 
+              <ComponentNavBreadcrumbs
+                component={this.props.component}
+                breadcrumbs={this.props.component.breadcrumbs}
+              />
+
+              <TooltipsContainer options={{ delay: { show: 0, hide: 2000 } }}>
+                <ComponentNavMeta
+                  {...this.props}
+                  {...this.state}
+                  version={this.props.component.version}
+                  snapshotDate={this.props.component.snapshotDate}
+                />
+              </TooltipsContainer>
+            </div>
             <ComponentNavMenu
               component={this.props.component}
               conf={this.props.conf}
